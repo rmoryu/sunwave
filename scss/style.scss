@@ -1,0 +1,346 @@
+$themecolor: #000;
+$highlight: #fffa8a;
+$golden: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+section {
+    .title {
+        width: 100%;
+        text-align: center;
+        line-height: 3rem;
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .content {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 2%;
+
+        .card {
+            display: flex;
+            width: 12rem;
+            padding: 0;
+            overflow: hidden;
+            border-radius: .8rem;
+
+            .items {
+                height: 12rem;
+                width: 100%;
+                overflow: hidden;
+                object-fit: cover;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .info {
+                position: relative;
+                padding: 0 3%;
+
+                p {
+                    line-height: 2rem;
+                }
+
+                button {
+                    position: absolute;
+                    bottom: 4px;
+                    right: 4px;
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 2rem;
+                    z-index: 2;
+                }
+            }
+        }
+    }
+}
+
+// header
+.header {
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .4% 2%;
+
+    a {
+        color: $themecolor;
+    }
+
+    .left {
+        display: flex;
+        flex-grow: 1;
+        gap: 5%;
+
+        .menu-btn {
+            height: 6vh;
+            width: 6vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                font-size: 2rem;
+            }
+        }
+
+        .brand-logo {
+            height: 100%;
+            object-fit: cover;
+            height: 6vh;
+            width: 6vh;
+
+            img {
+                height: 100%;
+            }
+        }
+    }
+
+    .navbar {
+        padding: 0 0 0 2%;
+        height: 100%;
+        flex-grow: 2;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1%;
+
+        a {
+            display: block;
+            padding: 0 2%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+            i {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}
+
+// banner
+.banner {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+    .info {
+        z-index: 1;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+
+        h1 {
+            letter-spacing: 2px;
+            font-weight: 700;
+            background-color: $themecolor;
+            color: #fff;
+            padding: 2px 5px;
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        a {
+            display: block;
+            padding: 2% 5%;
+            border: 1px solid #000;
+            color: $themecolor;
+            text-align: center;
+            border-radius: 50px;
+            margin: 10% 0 0;
+        }
+    }
+
+    .model {
+        z-index: 0;
+        height: 95%;
+        position: absolute;
+        right: 8%;
+        bottom: -2%;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .background-hashtags {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: absolute;
+        bottom: 30%;
+        left: 0;
+        right: 0;
+
+        div {
+            display: flex;
+            align-items: center;
+            gap: 3%;
+
+            p {
+                display: block;
+                background-color: $themecolor;
+                border-radius: 50px;
+                color: #fff;
+                height: 100%;
+                margin: 0;
+                padding: 0 5%;
+                line-height: 2.4rem;
+            }
+        }
+
+        div:nth-child(2),
+        div:nth-child(4) {
+            justify-content: flex-end;
+        }
+    }
+
+    .rectangle {
+        position: absolute;
+        bottom: 4%;
+        left: -10%;
+        right: -10%;
+        width: 150%;
+        height: 20%;
+        transform: rotate(-6deg);
+        z-index: 2;
+        background-color: $themecolor;
+    }
+
+    .triangle2 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-color: transparent #fff transparent transparent;
+        border-style: solid solid solid solid;
+        z-index: 2;
+
+        /* 設定邊框大小可拼湊出任意形狀的三角形 */
+        border-width: 80px 1024px 0px 0px;
+
+        /* 設定 width、height 可更好理解原理 */
+        height: 0px;
+        width: 0px;
+    }
+}
+
+// new
+.new {
+    margin: 5vh auto;
+}
+
+// banner
+.mag {
+    display: flex;
+    height: 40vh;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: nowrap;
+
+    .poster {
+        height: 100%;
+        width: 15vw;
+        overflow: hidden;
+        position: relative;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        h3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #fff;
+        }
+    }
+}
+
+// topic
+.topic {
+    margin: 5vh auto;
+}
+
+// ads
+.ads {
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+
+    img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+
+    button {
+        position: absolute;
+        padding: 5px 40px;
+        background-color: transparent;
+        border-radius: 8px;
+        letter-spacing: 2px;
+        font-size: 1.6rem;
+        left: 8%;
+        top: 10%;
+
+        i {
+            margin: 0 0 0 5px;
+        }
+    }
+
+    h3 {
+        position: absolute;
+        bottom: 5%;right: 5%;
+        color: #fff;
+        letter-spacing: 2px;
+        font-size: 4rem;
+    }
+}
+
+// women
+.women{
+    margin: 5vh auto;
+}
+
+// footer
+.footer{
+    width: 100%;
+    height: 50vh;
+    background-color: $themecolor;
+    display: flex;
+    padding: 2% 5%;
+    .logo{
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        img{
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

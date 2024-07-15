@@ -1,0 +1,302 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+section .title {
+  width: 100%;
+  text-align: center;
+  line-height: 3rem;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+section .content {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 2%;
+}
+section .content .card {
+  display: flex;
+  width: 12rem;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0.8rem;
+}
+section .content .card .items {
+  height: 12rem;
+  width: 100%;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section .content .card .items img {
+  width: 100%;
+}
+section .content .card .info {
+  position: relative;
+  padding: 0 3%;
+}
+section .content .card .info p {
+  line-height: 2rem;
+}
+section .content .card .info button {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  z-index: 2;
+}
+
+.header {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4% 2%;
+}
+.header a {
+  color: #000;
+}
+.header .left {
+  display: flex;
+  flex-grow: 1;
+  gap: 5%;
+}
+.header .left .menu-btn {
+  height: 6vh;
+  width: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .left .menu-btn i {
+  font-size: 2rem;
+}
+.header .left .brand-logo {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 6vh;
+  width: 6vh;
+}
+.header .left .brand-logo img {
+  height: 100%;
+}
+.header .navbar {
+  padding: 0 0 0 2%;
+  height: 100%;
+  flex-grow: 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1%;
+}
+.header .navbar a {
+  display: block;
+  padding: 0 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.header .navbar a i {
+  font-size: 1.4rem;
+}
+
+.banner {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.banner .info {
+  z-index: 1;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+.banner .info h1 {
+  letter-spacing: 2px;
+  font-weight: 700;
+  background-color: #000;
+  color: #fff;
+  padding: 2px 5px;
+  margin: 0;
+}
+.banner .info p {
+  margin: 0;
+  letter-spacing: 1px;
+}
+.banner .info a {
+  display: block;
+  padding: 2% 5%;
+  border: 1px solid #000;
+  color: #000;
+  text-align: center;
+  border-radius: 50px;
+  margin: 10% 0 0;
+}
+.banner .model {
+  z-index: 0;
+  height: 95%;
+  position: absolute;
+  right: 8%;
+  bottom: -2%;
+}
+.banner .model img {
+  height: 100%;
+}
+.banner .background-hashtags {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+  right: 0;
+}
+.banner .background-hashtags div {
+  display: flex;
+  align-items: center;
+  gap: 3%;
+}
+.banner .background-hashtags div p {
+  display: block;
+  background-color: #000;
+  border-radius: 50px;
+  color: #fff;
+  height: 100%;
+  margin: 0;
+  padding: 0 5%;
+  line-height: 2.4rem;
+}
+.banner .background-hashtags div:nth-child(2),
+.banner .background-hashtags div:nth-child(4) {
+  justify-content: flex-end;
+}
+.banner .rectangle {
+  position: absolute;
+  bottom: 4%;
+  left: -10%;
+  right: -10%;
+  width: 150%;
+  height: 20%;
+  transform: rotate(-6deg);
+  z-index: 2;
+  background-color: #000;
+}
+.banner .triangle2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid solid solid solid;
+  z-index: 2;
+  /* 設定邊框大小可拼湊出任意形狀的三角形 */
+  border-width: 80px 1024px 0px 0px;
+  /* 設定 width、height 可更好理解原理 */
+  height: 0px;
+  width: 0px;
+}
+
+.new {
+  margin: 5vh auto;
+}
+
+.mag {
+  display: flex;
+  height: 40vh;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.mag .poster {
+  height: 100%;
+  width: 15vw;
+  overflow: hidden;
+  position: relative;
+}
+.mag .poster img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.mag .poster h3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
+}
+
+.topic {
+  margin: 5vh auto;
+}
+
+.ads {
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  position: relative;
+}
+.ads img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.ads button {
+  position: absolute;
+  padding: 5px 40px;
+  background-color: transparent;
+  border-radius: 8px;
+  letter-spacing: 2px;
+  font-size: 1.6rem;
+  left: 8%;
+  top: 10%;
+}
+.ads button i {
+  margin: 0 0 0 5px;
+}
+.ads h3 {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 4rem;
+}
+
+.women {
+  margin: 5vh auto;
+}
+
+.footer {
+  width: 100%;
+  height: 50vh;
+  background-color: #000;
+  display: flex;
+  padding: 2% 5%;
+}
+.footer .logo {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.footer .logo img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=style.css.map */
