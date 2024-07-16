@@ -38,6 +38,7 @@ section .content .card {
   overflow: hidden;
   border-radius: 0.8rem;
   border: 2px solid #ddac17;
+  transition: all 0.4s;
 }
 section .content .card .items {
   height: 12rem;
@@ -66,6 +67,9 @@ section .content .card .info button {
   z-index: 2;
   background-color: #ddac17;
 }
+section .content .card:hover {
+  transform: translateY(-8px);
+}
 
 .header {
   height: 8vh;
@@ -87,6 +91,7 @@ section .content .card .info button {
   font-weight: 700;
   font-family: "Rowdies", arial;
   letter-spacing: 2px;
+  transition: background-color 0.4s;
 }
 .header a:hover {
   background-color: #ddac17;
@@ -148,7 +153,6 @@ section .content .card .info button {
   border-radius: 8px;
   overflow: hidden;
   height: 80%;
-  display: none;
 }
 .header .right .search-bar input {
   padding: 0 3%;
@@ -176,15 +180,23 @@ section .content .card .info button {
   transition: all 0.4s;
 }
 
+.scrolled .header a {
+  background-color: #000;
+  border: 1px solid #ddac17;
+  border-radius: 15rem;
+}
+.scrolled .header a:hover {
+  color: #ddac17;
+  filter: drop-shadow(0 0 1rem #ddac17);
+}
+
 .cover {
   overflow: hidden;
   width: 100%;
   height: 100vh;
   position: relative;
   background-color: #000;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), 0 100%);
-          clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), 0 100%);
-  z-index: 1;
+  z-index: -1;
 }
 .cover .info {
   z-index: 1;
@@ -202,7 +214,6 @@ section .content .card .info button {
   padding: 2px 5px;
   margin: 0;
   padding: 0 2rem;
-  filter: drop-shadow(0 0 1.2rem #ddac17);
   animation: flashing 1s linear infinite;
 }
 .cover .info p {
@@ -224,7 +235,7 @@ section .content .card .info button {
   margin: 10% 0 0;
 }
 .cover .model {
-  z-index: 0;
+  z-index: 1;
   height: 95%;
   position: absolute;
   right: 8%;
@@ -243,7 +254,7 @@ section .content .card .info button {
   left: 0;
   right: 0;
   transform: rotate(10deg);
-  z-index: -2;
+  z-index: 0;
 }
 .cover .background-hashtags div {
   display: flex;
@@ -265,15 +276,17 @@ section .content .card .info button {
   width: 20rem;
   text-align: center;
 }
-.cover .background-hashtags div:nth-child(1), .cover .background-hashtags div:nth-child(3) {
+.cover .background-hashtags div:nth-child(1),
+.cover .background-hashtags div:nth-child(3) {
   animation: shake 4s linear infinite;
 }
-.cover .background-hashtags div:nth-child(2), .cover .background-hashtags div:nth-child(4) {
+.cover .background-hashtags div:nth-child(2),
+.cover .background-hashtags div:nth-child(4) {
   animation: shake-reverse 4s linear infinite;
 }
 .cover .background-brand-logo {
   position: absolute;
-  z-index: -4;
+  z-index: -1;
   left: 2%;
   bottom: -55%;
   animation: round 20s linear infinite;
@@ -281,17 +294,34 @@ section .content .card .info button {
 
 .block {
   width: 100%;
-  height: 30rem;
+  height: 20rem;
   position: absolute;
-  top: 20rem;
-  -webkit-clip-path: polygon(0 75%, 100% 55%, 100% 85%, 0 100%);
-          clip-path: polygon(0 75%, 100% 55%, 100% 85%, 0 100%);
-  background-color: #ddac17;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  top: 80vh;
+  z-index: 2;
   color: #000;
+  overflow: hidden;
+}
+.block div {
+  background-color: #ddac17;
+  height: 10rem;
+  width: 100rem;
+  z-index: 2;
+  transform: rotate(-3deg);
+  position: absolute;
+  bottom: 30%;
+  left: -5%;
+  right: -5%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.block div p {
+  display: block;
+  z-index: 2;
+  font-size: 4rem;
+  font-family: "Rowdies", arial;
+  padding: 0 5% 0 0;
+  animation: flashing-2 0.6s linear infinite;
 }
 
 .new {
@@ -343,7 +373,24 @@ section .content .card .info button {
 }
 
 .topic {
-  margin: 5vh auto;
+  background-color: #000;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.topic .title {
+  display: flex;
+  justify-content: center;
+}
+.topic .title h2 {
+  height: 14vh;
+  width: 30vh;
+  background-color: #fff;
+  border-radius: 28rem 28rem 0 0;
+  color: #000;
+  padding-top: 60px;
+  margin: 0 0 4vh 0;
 }
 
 .ads {
@@ -352,26 +399,36 @@ section .content .card .info button {
   overflow: hidden;
   position: relative;
 }
-.ads img {
+.ads a {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+.ads a img {
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
   width: 100%;
 }
-.ads button {
+.ads a button {
   position: absolute;
   padding: 5px 40px;
   background-color: transparent;
   border-radius: 8px;
   letter-spacing: 2px;
   font-size: 1.6rem;
+  font-weight: 700;
   left: 8%;
   top: 10%;
+  transition: all 0.4s;
 }
-.ads button i {
+.ads a button:hover {
+  background-color: #ddac17;
+}
+.ads a button i {
   margin: 0 0 0 5px;
 }
-.ads h3 {
+.ads a h3 {
   position: absolute;
   bottom: 5%;
   right: 5%;
@@ -379,9 +436,16 @@ section .content .card .info button {
   letter-spacing: 2px;
   font-size: 4rem;
 }
+.ads a:hover button i {
+  animation: buy 0.6s linear infinite;
+}
 
 .women {
   margin: 5vh auto;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .footer {
@@ -441,15 +505,26 @@ section .content .card .info button {
 @keyframes flashing {
   0% {
     color: #ddac17;
+    filter: drop-shadow(0 0 1.4rem #ddac17);
   }
   10% {
     color: #000;
   }
   50% {
     color: #fff;
+    filter: drop-shadow(0 0 1rem #fff);
   }
   100% {
     color: #ddac17;
+    filter: drop-shadow(0 0 1.4rem #ddac17);
+  }
+}
+@keyframes flashing-2 {
+  0% {
+    color: #000;
+  }
+  100% {
+    color: #fff;
   }
 }
 @keyframes shake {
@@ -469,6 +544,17 @@ section .content .card .info button {
   }
   50% {
     transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes buy {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20%);
   }
   100% {
     transform: translateX(0);
