@@ -1,6 +1,7 @@
 $themecolor: #000;
 $highlight: #fffa8a;
 $golden: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
+$yellow: #ddac17;
 
 * {
     margin: 0;
@@ -33,6 +34,7 @@ section {
             padding: 0;
             overflow: hidden;
             border-radius: .8rem;
+            border: 2px solid $yellow;
 
             .items {
                 height: 12rem;
@@ -61,6 +63,7 @@ section {
                     height: 2rem;
                     border-radius: 2rem;
                     z-index: 2;
+                    background-color: $yellow;
                 }
             }
         }
@@ -68,15 +71,18 @@ section {
 }
 
 // header
+$header-height: 8vh;
+
 .header {
-    height: 8vh;
+    height: $header-height;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: .4% 2%;
+    background-color: $themecolor;
 
     a {
-        color: $themecolor;
+        color: #fff;
     }
 
     .left {
@@ -108,7 +114,7 @@ section {
         }
     }
 
-    .navbar {
+    .right {
         padding: 0 0 0 2%;
         height: 100%;
         flex-grow: 2;
@@ -128,15 +134,61 @@ section {
                 font-size: 1.4rem;
             }
         }
+
+        .search-bar {
+            display: none;
+            gap: 2%;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 80%;
+            display: none;
+
+            input {
+                padding: 0 3%;
+                line-height: 2rem;
+                background-color: transparent;
+                border: transparent;
+                outline: none;
+            }
+
+            button {
+                width: 3rem;
+                background-color: transparent;
+                border: transparent;
+                transition: all 0.4s;
+                padding: 0 2%;
+
+                i {
+                    transition: all 0.4s;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        .search-bar.active {
+            display: flex;
+        }
+
+        .search-icon {
+            i {
+                font-size: 1.4rem;
+                transition: all 0.4s;
+            }
+        }
     }
 }
 
-// banner
-.banner {
+
+// cover
+.cover {
     overflow: hidden;
     width: 100%;
-    height: 100vh;
+    height: 100vh - $header-height;
     position: relative;
+    background-color: $themecolor;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), 0 100%);
+    z-index: 1;
 
     .info {
         z-index: 1;
@@ -146,16 +198,22 @@ section {
 
         h1 {
             letter-spacing: 2px;
+            font-size: 6rem;
             font-weight: 700;
             background-color: $themecolor;
-            color: #fff;
+            border: 2px solid #fff;
+            color: $yellow;
             padding: 2px 5px;
             margin: 0;
+            padding: 0 2rem;
+            filter: drop-shadow(0 0 1.2rem $yellow);
         }
 
         p {
-            margin: 0;
+            margin: .2rem 0;
             letter-spacing: 1px;
+            color: #fff;
+            background-color: $themecolor;
         }
 
         a {
@@ -163,7 +221,10 @@ section {
             padding: 2% 5%;
             border: 1px solid #000;
             color: $themecolor;
+            background-color: #fff;
             text-align: center;
+            font-weight: 700;
+            letter-spacing: 2px;
             border-radius: 50px;
             margin: 10% 0 0;
         }
@@ -175,6 +236,7 @@ section {
         position: absolute;
         right: 8%;
         bottom: -2%;
+        filter: drop-shadow(0 0 2rem #fff);
 
         img {
             height: 100%;
@@ -184,11 +246,13 @@ section {
     .background-hashtags {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
         position: absolute;
-        bottom: 30%;
+        bottom: 25%;
         left: 0;
         right: 0;
+        transform: rotate(10deg);
+        z-index: -2;
 
         div {
             display: flex;
@@ -197,84 +261,96 @@ section {
 
             p {
                 display: block;
-                background-color: $themecolor;
+                background-color: #ffffffb5;
                 border-radius: 50px;
                 color: #fff;
                 height: 100%;
                 margin: 0;
-                padding: 0 5%;
-                line-height: 2.4rem;
+                padding: 0 auto;
+                font-weight: 700;
+                font-size: .8rem;
+                line-height: 2.6rem;
+                letter-spacing: 2px;
+                width: 20rem;
+                text-align: center;
             }
         }
-
-        div:nth-child(2),
-        div:nth-child(4) {
-            justify-content: flex-end;
-        }
     }
+}
 
-    .rectangle {
-        position: absolute;
-        bottom: 4%;
-        left: -10%;
-        right: -10%;
-        width: 150%;
-        height: 20%;
-        transform: rotate(-6deg);
-        z-index: 2;
-        background-color: $themecolor;
-    }
-
-    .triangle2 {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        border-color: transparent #fff transparent transparent;
-        border-style: solid solid solid solid;
-        z-index: 2;
-
-        /* 設定邊框大小可拼湊出任意形狀的三角形 */
-        border-width: 80px 1024px 0px 0px;
-
-        /* 設定 width、height 可更好理解原理 */
-        height: 0px;
-        width: 0px;
-    }
+.block {
+    width: 100%;
+    height: 30rem;
+    position: absolute;
+    top: 20rem;
+    clip-path: polygon(0 75%, 100% 55%, 100% 85%, 0 100%);
+    background-color: $yellow;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
 }
 
 // new
 .new {
-    margin: 5vh auto;
+    margin: 15vh auto 5vh auto;
+
+    .title {
+        margin: 2vh auto;
+    }
+
+    .carousel {
+        .carousel-inner {
+            .carousel-item {
+                .content {
+                    padding: 3vh;
+                }
+            }
+        }
+    }
 }
 
-// banner
+// mag
 .mag {
     display: flex;
     height: 40vh;
     width: 100%;
     justify-content: center;
-    flex-wrap: nowrap;
+    overflow: hidden;
 
-    .poster {
-        height: 100%;
-        width: 15vw;
-        overflow: hidden;
-        position: relative;
+    .marquee-area {
+        display: flex;
+        animation: move 40s linear infinite;
 
-        img {
-            object-fit: cover;
-            width: 100%;
+        a {
             height: 100%;
-        }
+            width: 15vw;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
 
-        h3 {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: #fff;
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+
+            h3 {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                color: #fff;
+                margin: 0;
+                padding: 5px 0;
+            }
         }
+    }
+
+    &:hover .marquee-area {
+        animation-play-state: paused;
     }
 }
 
@@ -313,7 +389,8 @@ section {
 
     h3 {
         position: absolute;
-        bottom: 5%;right: 5%;
+        bottom: 5%;
+        right: 5%;
         color: #fff;
         letter-spacing: 2px;
         font-size: 4rem;
@@ -321,26 +398,40 @@ section {
 }
 
 // women
-.women{
+.women {
     margin: 5vh auto;
 }
 
 // footer
-.footer{
+.footer {
     width: 100%;
     height: 50vh;
     background-color: $themecolor;
     display: flex;
     padding: 2% 5%;
-    .logo{
+
+    .logo {
         height: 80%;
         display: flex;
         justify-content: center;
         align-content: center;
-        img{
+
+        img {
             object-fit: contain;
             width: 100%;
             height: 100%;
         }
+    }
+}
+
+// animation
+
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
     }
 }
