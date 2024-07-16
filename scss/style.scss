@@ -1,12 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+
 $themecolor: #000;
 $highlight: #fffa8a;
 $golden: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
 $yellow: #ddac17;
+$themefont: 'Rowdies', arial;
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $themefont;
 }
 
 a {
@@ -71,18 +83,35 @@ section {
 }
 
 // header
-$header-height: 8vh;
-
 .header {
-    height: $header-height;
+    height: 8vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: .4% 2%;
-    background-color: $themecolor;
+    background-color: transparent;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    right: 0;
 
     a {
         color: #fff;
+        border-radius: 50px;
+        display: block;
+        font-weight: 700;
+        font-family: $themefont;
+        letter-spacing: 2px;
+        &:hover{
+            background-color: $yellow;
+            color: $themecolor;
+            border: 1px solid #fff;
+        }
+    }
+    .a-round{
+        width: 6vh;
+        height: 6vh;
     }
 
     .left {
@@ -96,7 +125,7 @@ $header-height: 8vh;
             display: flex;
             justify-content: center;
             align-items: center;
-
+            
             i {
                 font-size: 2rem;
             }
@@ -184,7 +213,7 @@ $header-height: 8vh;
 .cover {
     overflow: hidden;
     width: 100%;
-    height: 100vh - $header-height;
+    height: 100vh;
     position: relative;
     background-color: $themecolor;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), 0 100%);
@@ -207,6 +236,7 @@ $header-height: 8vh;
             margin: 0;
             padding: 0 2rem;
             filter: drop-shadow(0 0 1.2rem $yellow);
+            animation: flashing 1s linear infinite;
         }
 
         p {
@@ -235,8 +265,8 @@ $header-height: 8vh;
         height: 95%;
         position: absolute;
         right: 8%;
-        bottom: -2%;
-        filter: drop-shadow(0 0 2rem #fff);
+        bottom: -4%;
+        animation: move-circle 6s linear infinite;
 
         img {
             height: 100%;
@@ -275,6 +305,21 @@ $header-height: 8vh;
                 text-align: center;
             }
         }
+        div:nth-child(1), div:nth-child(3){
+            animation: shake 4s linear infinite;
+        }
+        div:nth-child(2), div:nth-child(4){
+            animation: shake-reverse 4s linear infinite;
+        }
+    }
+
+    .background-brand-logo {
+        position: absolute;
+        z-index: -4;
+        // right: 15%;
+        left: 2%;
+        bottom: -55%;
+        animation: round 20s linear infinite;
     }
 }
 
@@ -433,5 +478,81 @@ $header-height: 8vh;
 
     100% {
         transform: translateX(-100%);
+    }
+}
+
+@keyframes round {
+    0% {
+        transform: rotate(0) scale(1);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1.2);
+    }
+}
+
+@keyframes move-circle {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+        filter: drop-shadow(0 0 2rem #fff);
+    }
+
+    25% {
+        transform: translate(20px, 20px);
+        filter: drop-shadow(0 0 1.5rem #ff0);
+    }
+
+    50% {
+        transform: translate(40px, 0);
+        filter: drop-shadow(0 0 1rem #fff);
+    }
+
+    75% {
+        transform: translate(20px, -30px);
+        filter: drop-shadow(0 0 2.5rem #0ff);
+    }
+}
+
+@keyframes flashing {
+    0% {
+        color: $yellow;
+    }
+
+    10% {
+        color: $themecolor;
+    }
+
+    50% {
+        color: #fff;
+    }
+
+    100% {
+        color: $yellow;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes shake-reverse {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-10%);
+    }
+    100% {
+        transform: translateX(0);
     }
 }
