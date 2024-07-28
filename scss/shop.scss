@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+
+$themecolor: #000;
+$highlight: #fffa8a;
+$golden: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
+$yellow: #ddac17;
+$themefont: 'Rowdies', arial;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $themefont;
+}
+
+a {
+    text-decoration: none;
+}
+
+// main
+.main {
+    border: 1px dashed darkorchid;
+    margin: 8vh 2vw 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+
+    // left aside
+    .aside {
+        width: 16vw;
+    }
+
+    // right contanier
+    .contanier {
+        border: 1px solid teal;
+        width: 100%;
+        .carousel{
+            height: 30vh;
+            border: 1px solid tomato;
+            .carousel-inner{
+                height: 100%;
+                .carousel-item{
+                    border: 1px solid orchid;
+                    height: 100%;
+                    .img-block{
+                        background-color: gray;
+                        height: 100%;
+                        width: 100%;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

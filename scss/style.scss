@@ -1,29 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
-
 $themecolor: #000;
 $highlight: #fffa8a;
 $golden: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
 $yellow: #ddac17;
 $themefont: 'Rowdies', arial;
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: $themefont;
-}
-
-a {
-    text-decoration: none;
-}
 
 section {
     .title {
@@ -79,7 +58,8 @@ section {
                     background-color: $yellow;
                 }
             }
-            &:hover{
+
+            &:hover {
                 transform: translateY(-8px);
             }
         }
@@ -220,7 +200,8 @@ section {
             background-color: $themecolor;
             border: 1px solid $yellow;
             border-radius: 15rem;
-            &:hover{
+
+            &:hover {
                 color: $yellow;
                 filter: drop-shadow(0 0 1rem $yellow);
             }
@@ -494,7 +475,8 @@ section {
             left: 8%;
             top: 10%;
             transition: all .4s;
-            &:hover{
+
+            &:hover {
                 background-color: $yellow;
             }
 

@@ -8,9 +8,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-
-
-
 // .search-bar
 document.addEventListener('DOMContentLoaded', function () {
     const searchIcon = document.querySelector('.search-icon');

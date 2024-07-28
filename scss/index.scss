@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+
+$themecolor: #000;
+$highlight: #fffa8a;
+$golden: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
+$yellow: #ddac17;
+$themefont: 'Rowdies', arial;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $themefont;
+}
+
+a {
+    text-decoration: none;
+}
