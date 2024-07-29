@@ -1,4 +1,5 @@
 $themecolor: #000;
+$p_color: #333;
 $highlight: #fffa8a;
 $golden: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
 $yellow: #ddac17;
@@ -592,10 +593,11 @@ section {
             color: $themecolor;
         }
 
-        &:hover{
+        &:hover {
             background-color: $themecolor;
             filter: drop-shadow(0 1px 5px $yellow);
-            i{
+
+            i {
                 color: #fff;
             }
         }
@@ -617,6 +619,47 @@ section {
     padding: 0 0 0 8vw;
     margin: 8vh 0 0 0;
     float: left;
+
+    .accordion {
+        border: 1px dashed #00f;
+
+        .accordion-item {
+
+            // top level
+            h2 {
+                button{
+                    color: $themecolor;
+                    letter-spacing: 1px;
+                    background-color: transparent;
+                }
+            }
+
+            // 2nd level
+            .second-level {
+                hr{
+                    margin: 0 1vw;
+                }
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+
+                    a {
+                        display: block;
+                        color: $p_color;
+                        margin: 0 0 1vh 0;
+                        line-height: 2rem;
+                        font-family: $themefont;
+                        letter-spacing: 1px;
+                        transition: all .4s;
+                        &:hover{
+                            color: $yellow;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 #main {

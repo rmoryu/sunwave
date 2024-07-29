@@ -512,6 +512,33 @@ section .content .card .info button {
   margin: 8vh 0 0 0;
   float: left;
 }
+#aside .accordion {
+  border: 1px dashed #00f;
+}
+#aside .accordion .accordion-item h2 button {
+  color: #000;
+  letter-spacing: 1px;
+  background-color: transparent;
+}
+#aside .accordion .accordion-item .second-level hr {
+  margin: 0 1vw;
+}
+#aside .accordion .accordion-item .second-level div {
+  display: flex;
+  flex-direction: column;
+}
+#aside .accordion .accordion-item .second-level div a {
+  display: block;
+  color: #333;
+  margin: 0 0 1vh 0;
+  line-height: 2rem;
+  font-family: "Rowdies", arial;
+  letter-spacing: 1px;
+  transition: all 0.4s;
+}
+#aside .accordion .accordion-item .second-level div a:hover {
+  color: #ddac17;
+}
 
 #main {
   border: 1px solid #ff0;
