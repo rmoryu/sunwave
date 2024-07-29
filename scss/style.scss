@@ -64,7 +64,7 @@ section {
 
 
 // ====================================================================
-// header
+// header.html
 .header {
     height: 8vh;
     display: flex;
@@ -103,6 +103,7 @@ section {
         display: flex;
         flex-grow: 1;
         gap: 5%;
+        height: 100%;
 
         .menu-btn {
             height: 6vh;
@@ -116,14 +117,16 @@ section {
             }
         }
 
-        .brand-logo {
+        .logo {
             height: 100%;
-            object-fit: cover;
-            height: 6vh;
-            width: 6vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 2vw;
 
             img {
-                height: 100%;
+                height: 80%;
+                object-fit: cover;
             }
         }
     }
@@ -207,6 +210,7 @@ section {
     }
 }
 
+// ====================================================================
 // cover
 .cover {
     overflow: hidden;
@@ -510,12 +514,26 @@ section {
     justify-content: center;
 }
 
-// footer
+// index.card
+.index {
+    .content {
+        .card {
+            &:hover {
+                transform: translateY(-8px);
+            }
+        }
+    }
+}
+
+
+// ====================================================================
+// footer.html
 .footer {
     width: 100%;
     height: 50vh;
     background-color: $themecolor;
     display: flex;
+    flex-direction: column;
     margin: 6vh auto 0;
     padding: 2% 5%;
 
@@ -531,22 +549,21 @@ section {
             height: 100%;
         }
     }
-}
-
-// index.card
-.index {
-    .content {
-        .card {
-            &:hover {
-                transform: translateY(-8px);
-            }
+    .logo-name{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 6vh;
+        margin: 2vh auto;
+        img{
+            height: 100%;
+            object-fit: cover;
         }
     }
 }
 
-
 // ====================================================================
-// all.html
+// all.html all.php
 #aside {
     border: 1px solid tomato;
     width: 24vw;
@@ -578,7 +595,7 @@ section {
 
         .card {
             width: 14rem;
-            
+
             .items {
                 img {
                     width: 100%;

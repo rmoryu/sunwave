@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/index.css">
@@ -14,28 +13,7 @@
 
 <body>
     <!-- header -->
-    <section class="header">
-        <div class="left menu-btn">
-            <a href="#" class="menu-btn">
-                <i class="fa-solid fa-burger"></i>
-            </a>
-            <a href="index.html" class="logo">
-                <img src="./images/sunwave.png">
-            </a>
-        </div>
-        <div class="right navbar">
-            <a href="./goods.html">PRODUCT.</a>
-            <a href="#">ABOUT.</a>
-            <a href="#">OTHERS.</a>
-            <div class="search-bar">
-                <input type="text" placeholder="Topic Products">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-            <a href="#" class="a-round search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href="#" class="a-round "><i class="fa-solid fa-bag-shopping"></i></a>
-            <a href="#" class="a-round "><i class="fa-regular fa-circle-user"></i></a>
-        </div>
-    </section>
+    <?php include 'header.html'; ?>
 
     <!-- cover -->
     <section class="cover">
@@ -539,27 +517,17 @@
     </section>
 
     <!-- footer -->
-    <section class="footer">
-        <div class="logo">
-            <img src="./images/sunwave_logo.png" alt="">
-        </div>
-    </section>
+    <?php include 'footer.html'; ?>
 
-    <!-- javascript -->
-    <script src="./js/script.js" crossorigin="anonymous"></script>
-
-    <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/a9ac565d46.js" crossorigin="anonymous"></script>
 </body>
+<!-- javascript -->
+<script src="./js/script.js" crossorigin="anonymous"></script>
+
+<!-- bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/a9ac565d46.js" crossorigin="anonymous"></script>
 
 </html>
