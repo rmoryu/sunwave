@@ -16,6 +16,9 @@
     <!-- header -->
     <?php include 'header.html'; ?>
 
+    <!-- sidebar button -->
+    <?php include 'sidebar.html'; ?>
+
     <!-- aside -->
     <section id="aside">
         <div class="accordion" id="accordionExample">

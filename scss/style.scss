@@ -549,16 +549,62 @@ section {
             height: 100%;
         }
     }
-    .logo-name{
+
+    .logo-name {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 6vh;
         margin: 2vh auto;
-        img{
+
+        img {
             height: 100%;
             object-fit: cover;
         }
+    }
+}
+
+// ====================================================================
+// sidebar.html
+#sidebar {
+    position: fixed;
+    right: 1rem;
+    top: 8vh;
+    bottom: 0;
+    padding: 0 0 4vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    a {
+        background-color: #fff;
+        border: 2px solid $themecolor;
+        border-radius: 50px;
+        font-size: 2rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .6s;
+
+        i {
+            color: $themecolor;
+        }
+
+        &:hover{
+            background-color: $themecolor;
+            filter: drop-shadow(0 1px 5px $yellow);
+            i{
+                color: #fff;
+            }
+        }
+    }
+
+    a:nth-child(1) {
+        background-color: transparent;
+        border: transparent;
+        z-index: -99;
     }
 }
 
