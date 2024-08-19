@@ -3,23 +3,14 @@
 include("./data_php/connect_test.php");
 $seldb = mysqli_select_db($db_link, "sunwave");
 
-// 如果沒有就顯示下列訊息
-// 方法一
-// if (!$seldb) {
-//     die("失敗ㄌ嗚嗚嗚<br><br>");
-// } else {
-//     // 如果成功了就顯示下列訊息
-//     echo "成功了好欸<br><br>";
-// }
-// 方法二
 if (!$seldb) die("<h1>失敗了嗚嗚嗚</h1>");
 
 $sql_query = "SELECT * FROM pyclass";
 $result = mysqli_query($db_link, $sql_query);
 $total_records = $result->num_rows;
-
 ?>
-
+<?php (!isset($_SESSION)) ? session_start() : "";  ?>
+<?php require_once("php_lib.php"); ?>
 <!doctype html>
 <html lang="en">
 
@@ -39,6 +30,10 @@ $total_records = $result->num_rows;
 
     <!-- sidebar button -->
     <?php include 'sidebar.html'; ?>
+
+    <!-- carousel -->
+    <?php // include 'carousel.php'; 
+    ?>
 
     <!-- aside -->
     <section id="aside">
@@ -62,11 +57,11 @@ $total_records = $result->num_rows;
                     $SQLstring = sprintf("SELECT * FROM pyclass WHERE level = 2 AND uplink = %d ORDER BY sort", $pyclass01_Rows['classid']);
                     $pyclass02 = $db_link->query($SQLstring);
                     ?>
-                    <div id="collapseOne<?php echo $i; ?>" class="second-level accordion-collapse collapse <?php echo ($i == 2) ? 'show' : ''; ?>" aria-labelledby="headingOne<?php echo $i; ?>" data-bs-parent="#accordionExample">
+                    <div id="collapseOne<?php echo $i; ?>" class="second-level accordion-collapse collapse <?php echo ($i == 1) ? 'show' : ''; ?>" aria-labelledby="headingOne<?php echo $i; ?>" data-bs-parent="#accordionExample">
                         <hr>
                         <div class="accordion-body">
                             <?php while ($pyclass02_Rows = $pyclass02->fetch_assoc()) { ?>
-                                <a href="#"><?php echo $pyclass02_Rows['cname']; ?></a>
+                                <a href="?classid=<?php echo $pyclass02_Rows['classid']; ?>"><?php echo $pyclass02_Rows['cname']; ?></a>
                             <?php } ?>
                         </div>
                     </div>
@@ -76,151 +71,67 @@ $total_records = $result->num_rows;
         </div>
     </section>
 
+
     <!-- main -->
     <section id="main">
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
+        <div class="container">
+            <?php
+            $maxRows_rs = 24; // max
+            $pageNum_rs = 0;
+            if (isset($_GET['pageNum_rs'])) {
+                $pageNum_rs = $_GET['pageNum_rs'];
+            }
+            $startRows_rs = $pageNum_rs * $maxRows_rs;
+            $classid = isset($_GET['classid']) ? intval($_GET['classid']) : 0;
+            $queryFirst = "SELECT * FROM product WHERE p_open = 1";
 
-        <div class="goods-container content">
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/glasses_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
+            if ($classid > 0) {
+                $SQLcheck = "SELECT level FROM pyclass WHERE classid = $classid";
+                $resultCheck = $db_link->query($SQLcheck);
+                $rowCheck = $resultCheck->fetch_assoc();
+
+                if ($rowCheck['level'] == 1) {
+                    $SQLsubclass = "SELECT classid FROM pyclass WHERE uplink = $classid";
+                    $resultSubclass = $db_link->query($SQLsubclass);
+
+                    $subclassArray = array();
+                    while ($rowSubclass = $resultSubclass->fetch_assoc()) {
+                        $subclassArray[] = $rowSubclass['classid'];
+                    }
+
+                    if (!empty($subclassArray)) {
+                        $subclassList = implode(',', $subclassArray);
+                        $queryFirst .= " AND classid IN ($subclassList)";
+                    } else {
+                        $queryFirst .= " AND classid = $classid";
+                    }
+                } else {
+                    $queryFirst .= " AND classid = $classid";
+                }
+            }
+
+            $queryFirst .= " ORDER BY product.p_id DESC";
+            $query = $queryFirst . " LIMIT $startRows_rs, $maxRows_rs";
+            $pList01 = $db_link->query($query);
+            $i = 1;
+            ?>
+
+            <?php while ($pList01_Rows = $pList01->fetch_assoc()) { ?>
+                <?php if ($i % 4 == 1) { ?> <div class="content"> <?php } ?>
+                    <a href="#" class="card">
+                        <div class="items">
+                            <img src="./images/<?php echo $pList01_Rows['img_file']; ?>" title="<?php echo $pList01_Rows['p_name']; ?>">
+                        </div>
+                        <div class="info">
+                            <p><?php echo $pList01_Rows['p_name']; ?></p>
+                            <h6 class="price">$<?php echo $pList01_Rows['p_price']; ?></h6>
+                            <button><i class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </a>
+                    <?php if ($i % 4 == 0 || $i == $pList01->num_rows) { ?>
+                    </div><?php } ?>
+            <?php $i++;
+            } ?>
         </div>
     </section>
 
@@ -239,3 +150,9 @@ $total_records = $result->num_rows;
 <script src="https://kit.fontawesome.com/a9ac565d46.js" crossorigin="anonymous"></script>
 
 </html>
+<?php
+function activeShow($num, $chkPoint)
+{
+    return (($num == $chkPoint) ? "active" : "");
+}
+?>

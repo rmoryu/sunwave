@@ -1,3 +1,16 @@
+<?php
+// 測試資料庫有沒有連結成功
+include("./data_php/connect_test.php");
+$seldb = mysqli_select_db($db_link, "sunwave");
+
+if (!$seldb) die("<h1>失敗了嗚嗚嗚</h1>");
+
+$sql_query = "SELECT * FROM pyclass";
+$result = mysqli_query($db_link, $sql_query);
+$total_records = $result->num_rows;
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -55,7 +68,7 @@
             </div>
         </div>
         <div class="background-brand-logo 0">
-            <img src="./images/sunwave_logo.png" alt="">
+            <img src="./images/brand/sunwave_logo.png" alt="">
         </div>
         <div class="model 1">
             <img src="./images/model_001.png" alt="">
@@ -250,7 +263,7 @@
     </section>
 
     <!-- mag -->
-    <section class="mag">
+    <!-- <section class="mag">
         <div class="marquee-area">
             <a href="#">
                 <img src="./images/poster_001.jpg" alt="">
@@ -283,9 +296,9 @@
             <a href="#">
                 <img src="./images/poster_008.jpg" alt="">
                 <h3>TITLE</h3>
-            </a>
-            <!-- 無縫滾動 -->
-            <a href="#">
+            </a> -->
+    <!-- 無縫滾動 -->
+    <!-- <a href="#">
                 <img src="./images/poster_001.jpg" alt="">
                 <h3>TITLE</h3>
             </a>
@@ -350,9 +363,9 @@
             <a href="#">
                 <img src="./images/poster_008.jpg" alt="">
                 <h3>TITLE</h3>
-            </a>
-            <!-- 無縫滾動 -->
-            <a href="#">
+            </a> -->
+    <!-- 無縫滾動 -->
+    <!-- <a href="#">
                 <img src="./images/poster_001.jpg" alt="">
                 <h3>TITLE</h3>
             </a>
@@ -385,7 +398,7 @@
                 <h3>TITLE</h3>
             </a>
         </div>
-    </section>
+    </section> -->
 
 
 
@@ -453,67 +466,57 @@
         <a href="#">
             <button>BUY<i class="fa-solid fa-arrow-right"></i></button>
             <img src="./images/landscape_001.jpg" alt="">
-            <h3>WOMEN</h3>
+            <h3>Heading</h3>
         </a>
     </section>
 
-    <!-- section -->
-    <section class="index women">
+    <!-- special -->
+    <section class="index special">
         <div class="title">
-            <h2>Women</h2>
+            <h2>Special Design</h2>
         </div>
-        <div class="content">
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/women_001.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/women_002.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/women_003.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/women_004.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-            <a href="#" class="card">
-                <div class="items">
-                    <img src="./images/women_005.jpg" alt="">
-                </div>
-                <div class="info">
-                    <p>lorem</p>
-                    <h6 class="price">$$$</h6>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </a>
-        </div>
+        <?php
+        $maxRows_rs = 12;
+        $pageNum_rs = 0;
+        if (isset($_GET['pageNum_rs'])) {
+            $pageNum_rs = $_GET['pageNum_rs'];
+        }
+        $startRows_rs = $pageNum_rs * $maxRows_rs;
+
+        $queryFirst = sprintf("SELECT * FROM product, product_img WHERE p_open = 1 AND product_img.sort = 1 ORDER BY product.p_id DESC", $maxRows_rs);
+        $query = sprintf("%s LIMIT %d, %d", $queryFirst, $startRows_rs, $maxRows_rs);
+        $pList01 = $db_link->query($query);
+        $i = 1;
+        ?>
+
+        <?php while ($pList01_Rows = $pList01->fetch_assoc()) { ?>
+            <?php if ($i % 4 == 1) { ?> <div class="content"> <?php } ?>
+                <!-- <div class="content"> -->
+                <a href="#" class="card">
+                    <div class="items">
+                        <img src="./images/women_001.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>lorem</p>
+                        <h6 class="price">$$$</h6>
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </a>
+                <a href="#" class="card">
+                    <div class="items">
+                        <img src="./images/<?php echo $pList01_Rows['img_file']; ?>" title="<?php echo $pList01_Rows['p_name']; ?>">
+                    </div>
+                    <div class="info">
+                        <p>lorem</p>
+                        <h6 class="price">$$$</h6>
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </a>
+                <?php if ($i % 4 == 0 || $i == $pList01->rowCount()) { ?>
+                </div><?php } ?>
+            </div>
+        <?php $i++;
+        } ?>
     </section>
 
     <!-- footer -->
